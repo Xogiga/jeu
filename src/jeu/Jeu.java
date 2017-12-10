@@ -5,43 +5,54 @@
  */
 package jeu;
 
+import javax.swing.*;
+
 
 /**
  *
  * @author p1507423
  */
-public class Jeu {
-    
+public class Jeu extends JFrame {
     
     
     public static void main(String[] args) {
-        int large = 10;
-        int longu = 30;
+        int longu = 100;
+        int larg = 2;
         
-        String terrain[][] = new String[large][longu];
-        remplir(terrain, large, longu);
-        affiche(terrain, large, longu);
-        //yo
+        int plateau[][] = new int[longu][larg];
+        remplir(plateau, longu);
+        affiche(plateau, longu);
+        
+        
+        
         
     }
     
     
     
-    public static void remplir(String tab[][], int x, int y) {
-        for (int j=0; j<y; j++){
-            for (int i=0; i<x; i++){
-                tab[i][j]="a";
-            }
+    public static void remplir(int tab[][], int x) {
+        for (int i=0; i<x; i++) {
+            tab[i][1]=i+1;
         }
     }
     
-    public static void affiche(String tab[][], int x, int y) {
-        for (int j=0; j<y; j++){
-            for (int i=0; i<x; i++){
-                System.out.print(tab[i][j]);
+    public static void affiche(int tab[][], int x) {
+        int cpt=0;
+        for (int j=0; j<10; j++) {
+            for (int i=0; i<10; i++) {
+                if (cpt<9)
+                    System.out.print("   "+tab[cpt][1]+" |");
+                else
+                    System.out.print("  "+tab[cpt][1]+" |");
+                
+                cpt++;
             }
             System.out.print("\n");
         }
+    }
+    
+    public static void remplabel (String tab[][], JLabel labels[]) {
+        
     }
     
 }
