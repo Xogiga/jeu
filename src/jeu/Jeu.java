@@ -5,6 +5,7 @@
  */
 package jeu;
 
+import java.math.*;
 import javax.swing.*;
 
 
@@ -30,10 +31,43 @@ public class Jeu extends JFrame {
     
     
     
-    public static void remplir(int tab[][], int x) {
-        for (int i=0; i<x; i++) {
+    public static void remplir(int tab[][], int taille) {
+        
+        double alead=0;
+        int aleai=0;
+        
+        for (int i=0; i<taille; i++) {
+            
+            //remplissage du terrain de 1 a 100
+            
             tab[i][1]=i+1;
+            
+            
+            //ajout des pieges et bonus
+            
+            alead=Math.random()*100;
+            if (alead>90&&alead<100){
+                while (alead>i ){
+                    alead=Math.random()*100;
+                }
+                
+                aleai= (int) alead;
+                
+                alead=Math.random();
+                if (alead<0.5)
+                    tab[i][0]=aleai;
+                else
+                    tab[i][0]=aleai*-1;
+                
+                
+                
+            }
+            
         }
+        
+        
+        
+        
     }
     
     public static void affiche(int tab[][], int x) {
@@ -45,6 +79,18 @@ public class Jeu extends JFrame {
                 else
                     System.out.print("  "+tab[cpt][1]+" |");
                 
+                cpt++;
+            }
+            System.out.print("\n");
+            cpt=cpt-10;
+                
+            for (int i=0; i<10; i++) {
+                if (tab[cpt][0]<=9 && tab[cpt][0]>=0)
+                    System.out.print("   "+tab[cpt][0]+" |");
+                if ((tab[cpt][0]>=10) || (tab[cpt][0]>=-9 && tab[cpt][0]<=-1))
+                    System.out.print("  "+tab[cpt][0]+" |");
+                if (tab[cpt][0]<=-10)
+                    System.out.print(" "+tab[cpt][0]+" |");
                 cpt++;
             }
             System.out.print("\n");
