@@ -81,11 +81,10 @@ public class Jeu {
         double alead=0;
         //aleai : partie entiere de alead
         int aleai=0;
-        //cptest : compteur de test
+        //cptest : compteur de test initi
         int cptest=0;
         
         for (int i=0; i<taille; i++) {
-            cptest=i;    
             
             //remplissage d'une ligne du tableau de 1 a taille
             tab[i][1]=i+1;
@@ -110,6 +109,8 @@ public class Jeu {
                 else
                     tab[i][0]=aleai*-1;
             }
+            
+            cptest++;    
         }
         
         return cptest;

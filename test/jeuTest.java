@@ -54,9 +54,10 @@ public class jeuTest {
     @Test
     public void Remplir() {
         int tab[][] = new int[100][2];
-        assertEquals(99, Jeu.remplir(tab, 100));
+        assertEquals(100, Jeu.remplir(tab, 100));
     }
     
+    //Test qui ne fonctionne pas, mais présente pour vérifier que cela ne retourne pas toujours true
     @Test
     public void RemplirBug() {
         int tab[][] = new int[100][2];
