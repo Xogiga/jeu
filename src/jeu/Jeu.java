@@ -20,9 +20,10 @@ public class Jeu extends JFrame {
     public static void main(String[] args) {
         int longu = 100;
         int larg = 2;
+        int testuseless;
         
         int plateau[][] = new int[longu][larg];
-        remplir(plateau, longu);
+        testuseless=remplir(plateau, longu);
         
         int pion=0;
         Scanner input = new Scanner(System.in);
@@ -63,12 +64,14 @@ public class Jeu extends JFrame {
     
     
     
-    public static void remplir(int tab[][], int taille) {
+    public static int remplir(int tab[][], int taille) {
         
         double alead=0;
         int aleai=0;
+        int cptest=0;
         
         for (int i=0; i<taille; i++) {
+            cptest=i;    
             
             //remplissage du terrain de 1 a 100
             
@@ -94,22 +97,21 @@ public class Jeu extends JFrame {
                 else
                     tab[i][0]=aleai*-1;
             }
-            
         }
         
-        
-        
+        return cptest;
         
     }
     
     public static void affiche(int tab[][], int x, int plac) {
+        
         int cpt=0;
         String aff="";
         for (int j=0; j<10; j++) {
             for (int i=0; i<10; i++) {
                 aff=" ";
                 if (plac==cpt)
-                    aff+="^";
+                    aff+="•";
                 else
                     aff+=" ";
                 if (cpt<9)
@@ -122,7 +124,7 @@ public class Jeu extends JFrame {
             
             
             //affichage des bonus/malus (debug only)
-            
+            /*
             System.out.print("\n");
             cpt=cpt-10;
             for (int i=0; i<10; i++) {
@@ -134,6 +136,7 @@ public class Jeu extends JFrame {
                     System.out.print(" "+tab[cpt][0]+" |");
                 cpt++;
             }
+            */
             
             System.out.print("\n");
         }
