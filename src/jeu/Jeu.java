@@ -31,6 +31,7 @@ public class Jeu extends JFrame {
         
         do {
             
+            //input
             System.out.println("De combien de cases voulez-vous avancer ? (entre 1 et 6)");
             avc = input.nextInt();
             while (avc<1 || avc>6){
@@ -38,21 +39,24 @@ public class Jeu extends JFrame {
                 avc = input.nextInt();
             }
             
-            pion+=avc;
+            //avance de pion
+            pion=Avance(pion, avc);
             System.out.println("En route vers la case "+(pion+1)+" !");
+            
             
             if (plateau[pion][0]!=0){
                 if (plateau[pion][0]>0) 
                     System.out.println("Case chance ! Tu avances de "+plateau[pion][0]+" cases !");
                 else
                     System.out.println("Pas de pot ! Tu recules de "+(plateau[pion][0]*-1)+" cases !");
-                pion+=plateau[pion][0];
+                pion=Avance(pion, plateau[pion][0]);
             }
             
             System.out.println("Arrivee a la case "+(pion+1));
             
             affiche(plateau, longu, pion);
             avc=0;
+            
         }while (pion < 99);
         
     }
@@ -75,7 +79,7 @@ public class Jeu extends JFrame {
             
             alead=Math.random()*100;
             //10% de chances d'avoir un bonus/malus sur chaque case
-            if (alead>90&&alead<100){
+            if (alead>80&&alead<100){
                 //verification pour ne pas avoir de hors limites
                 while (alead>i ){
                     alead=Math.random()*100;
@@ -135,8 +139,16 @@ public class Jeu extends JFrame {
         }
     }
     
-    public static void remplabel (String tab[][], JLabel labels[]) {
+    public static int Avance (int casedep, int lancer) {
+        int res = casedep+lancer;
         
+        if (res>100)
+            return 100;
+        else
+            return res;
     }
+    
+    //public static void remplabel (String tab[][], JLabel labels[]) {
+    //}
     
 }
